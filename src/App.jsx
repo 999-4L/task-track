@@ -33,7 +33,7 @@ function App() {
     }
     let task = { name: taskName, dueDate: taskDate, isCompleted: false };
     let clonedTaskItems = [...tasks, task];
-    setTaskItems([...clonedTaskItems]);
+    setTaskItems(clonedTaskItems);
     saveToLS(clonedTaskItems);
   };
 
