@@ -32,9 +32,14 @@ function App() {
       taskDate = "No due date";
     }
     let task = { name: taskName, dueDate: taskDate, isCompleted: false };
-    let clonedTaskItems = [...tasks, task];
-    setTaskItems(clonedTaskItems);
-    saveToLS(clonedTaskItems);
+    if (tasks) {
+      let clonedTaskItems = [...tasks, task];
+      setTaskItems([...clonedTaskItems]);
+      saveToLS(clonedTaskItems);
+    } else {
+      setTaskItems([task]);
+      saveToLS([task]);
+    }
   };
 
   const handleFilter = (category) => {
