@@ -27,7 +27,12 @@ function App() {
   };
 
   const handleTaskAdd = (taskName, taskDate) => {
-    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    let tasks;
+    if (localStorage.getItem("tasks") === null) {
+      tasks = [];
+    } else {
+      tasks = JSON.parse(localStorage.getItem("tasks"));
+    }
     if (taskDate === "") {
       taskDate = "No due date";
     }
@@ -43,7 +48,12 @@ function App() {
   };
 
   const handleFilter = (category) => {
-    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    let tasks;
+    if (localStorage.getItem("tasks") === null) {
+      tasks = [];
+    } else {
+      tasks = JSON.parse(localStorage.getItem("tasks"));
+    }
     if (category === "All") {
       setTaskItems(tasks);
     } else if (category === "Pending") {
