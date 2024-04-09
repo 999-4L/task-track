@@ -163,9 +163,9 @@ function App() {
   };
 
   return (
-    <>
-      <div className="font-[Poppins] flex items-center h-[100vh] bg-[#2A303C]">
-        <div className="container mx-auto my-1.5 rounded-xl p-5 bg-[#4A4F59] text-white shadow-[0_8px_32px_0px_rgba(135,88,255,0.3)] max-w-[60vw]">
+    <div className="outer-wrapper">
+      <div className="middle-wrapper lg:py-3">
+        <div className="container m-auto h-fit p-3 bg-[#4A4F59] text-white shadow-[0_8px_32px_0px_rgba(135,88,255,0.3)] w-screen rounded-xl lg:max-w-[60vw]">
           <AppName />
           <AddTask
             handleEnterBtn={handleTaskAdd}
@@ -185,14 +185,14 @@ function App() {
         </div>
         <ToastContainer
           toastClassName={() =>
-            "font-[Poppins] relative flex p-3 min-h-16 rounded-2xl justify-between items-center overflow-hidden bg-[#121212]"
+            "font-[Poppins] mt-3 lg:mt-0 mx-1 lg:mx-0 relative flex p-3 min-h-16 rounded-2xl justify-between items-center overflow-auto bg-[#121212]"
           }
           bodyClassName={() =>
             "font-[Poppins] flex items-center justify-center"
           }
         />
       </div>
-    </>
+    </div>
   );
 }
 
