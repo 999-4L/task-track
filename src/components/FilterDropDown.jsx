@@ -13,7 +13,7 @@ function FilterDropDown({ handleFilter }) {
   return (
     <Menu as="div" className="relative inline-block text-center">
       <div>
-        <Menu.Button className="inline-flex justify-center items-center bg-[#8758ff] p-3 py-1 text-white rounded-md font-semibold hover:bg-[#714bd1] ml-1 h-[48px] w-[80px] text-base">
+        <Menu.Button className="inline-flex justify-center items-center bg-[#8758ff] p-3 py-1 text-white rounded-md font-semibold hover:bg-[#714bd1] h-[40px] w-[80px] text-base">
           Filter
         </Menu.Button>
       </div>
