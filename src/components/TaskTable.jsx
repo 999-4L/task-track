@@ -1,50 +1,17 @@
-import TaskItem from "./TaskItem";
+import FilterDropDown from "./FilterDropDown";
 
-function TaskTable({ taskItems, handleEdit, handleDone, handleDelete }) {
+function FilterDel({ handleFilter, handleDeleteAll }) {
   return (
-    <div className="relative overflow-x-auto sm:rounded-xl tasks">
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs bg-white dark:bg-gray-900 text-gray-700 uppercase dark:text-gray-400">
-          <tr>
-            <th scope="col" className="px-6 py-3 text-center">
-              Task
-            </th>
-            <th scope="col" className="px-6 py-3 text-center">
-              Due Date
-            </th>
-            <th scope="col" className="px-6 py-3 text-center">
-              Status
-            </th>
-            <th scope="col" className="px-6 py-3 text-center">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {taskItems.length === 0 ? (
-            <tr className="bg-gray-50 dark:bg-gray-800 border-b dark:border-gray-700 text-white">
-              <td
-                colSpan={4}
-                className="px-6 py-4 text-center text-base font-medium"
-              >
-                No tasks found. Enjoy your day!
-              </td>
-            </tr>
-          ) : (
-            taskItems.map((task) => (
-              <TaskItem
-                key={task.name}
-                task={task}
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-                handleDone={handleDone}
-              />
-            ))
-          )}
-        </tbody>
-      </table>
+    <div className="filter my-5 flex flex-row gap-3 justify-between items-center">
+      <FilterDropDown handleFilter={handleFilter} />
+      <button
+        className="bg-[#c61919] hover:bg-[#f74343] p-3 py-1 text-white rounded-md font-medium ml-1 h-[40px] max-w-[100px]"
+        onClick={handleDeleteAll}
+      >
+        Delete All
+      </button>
     </div>
   );
 }
 
-export default TaskTable;
+export default FilterDel;
