@@ -43,11 +43,11 @@ function AddTask({ handleEnterBtn, editBool, toggleEdit }) {
     }
   };
   return (
-    <div className="my-5 flex flex-col xl:flex-row gap-3 justify-between items-center w-full">
+    <div className="my-5 grid grid-cols-6 gap-4 lg:grid-cols-12 justify-items-stretch">
       <input
         id="task-name"
         type="text"
-        className="placecholder:text-[#ffffff4d] w-7/12 min-w-[256px] p-3 py-1 rounded-md bg-[#2A303C] border-[1px] h-[48px] outline-none border-[#8758ff] mr-1"
+        className="placecholder:text-[#ffffff4d] col-span-6 lg:col-span-6 p-3 py-1 rounded-md bg-[#2A303C] border-[1px] h-[48px] outline-none border-[#8758ff]"
         placeholder="What is the task today?"
         onKeyDown={(event) => {
           if (event.key === "Enter") {
@@ -58,11 +58,11 @@ function AddTask({ handleEnterBtn, editBool, toggleEdit }) {
       <input
         id="task-deadline"
         type="date"
-        className="w-64 p-3 py-1 rounded-md bg-[#2A303C] border-[1px] h-[48px] outline-none border-[#8758ff]"
+        className="col-span-4 lg:col-span-3 p-3 py-1 rounded-md bg-[#2A303C] border-[1px] h-[48px] outline-none border-[#8758ff]"
       />
       <button
         id="addBtn"
-        className="bg-[#8758ff] hover:bg-[#714bd1] p-3 py-1 text-white rounded-md font-semibold ml-1 h-[48px] w-[100px]"
+        className="col-span-2 lg:col-span-3 bg-[#8758ff] hover:bg-[#714bd1] p-3 py-1 text-white rounded-md font-semibold h-[48px]"
         onClick={handleTaskAdd}
       >
         {editBool === 1 ? "Edit Task" : "Add Task"}
