@@ -27,19 +27,20 @@ function App() {
   };
 
   const handleTaskAdd = (taskName, taskDate) => {
+    let taskString = localStorage.getItem("tasks");
     let tasks;
-    if (localStorage.getItem("tasks") === null) {
-      tasks = [];
+    if (taskString) {
+      tasks = JSON.parse(taskString);
     } else {
-      tasks = JSON.parse(localStorage.getItem("tasks"));
+      tasks = [];
     }
     if (taskDate === "") {
       taskDate = "No due date";
     }
     let task = { name: taskName, dueDate: taskDate, isCompleted: false };
     if (tasks) {
-      let clonedTaskItems = [...tasks, task];
-      setTaskItems([...clonedTaskItems]);
+      let clonedTaskItems = [...(tasks || []), task];
+      setTaskItems([...(clonedTaskItems || [])]);
       saveToLS(clonedTaskItems);
     } else {
       setTaskItems([task]);
@@ -48,11 +49,12 @@ function App() {
   };
 
   const handleFilter = (category) => {
+    let taskString = localStorage.getItem("tasks");
     let tasks;
-    if (localStorage.getItem("tasks") === null) {
-      tasks = [];
+    if (taskString) {
+      tasks = JSON.parse(taskString);
     } else {
-      tasks = JSON.parse(localStorage.getItem("tasks"));
+      tasks = [];
     }
     if (category === "All") {
       setTaskItems(tasks);
@@ -123,8 +125,8 @@ function App() {
   };
 
   const handleDone = (taskName) => {
-    let clonedTaskItems = [...taskItems];
-    clonedTaskItems.every((task) => {
+    let clonedTaskItems = [...(taskItems || [])];
+    const changeDone = (task) => {
       if (task.name === taskName) {
         if (task.isCompleted) {
           toast.warn("Task marked as pending!", {
@@ -154,7 +156,8 @@ function App() {
         task.isCompleted = !task.isCompleted;
         return false;
       }
-    });
+    };
+    clonedTaskItems.forEach(changeDone);
     setTaskItems(clonedTaskItems);
     saveToLS(clonedTaskItems);
   };
